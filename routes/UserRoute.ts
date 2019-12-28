@@ -12,7 +12,7 @@ import jwt from 'jsonwebtoken'
     //     _id: IUser['_id']
     // }
     
-const tokenSecret: any = process.env.TOKEN_SECRET
+const tokenSecret: any = process.env.TOKEN_SECRET || "BINGO_WINGS"
 const router: Router = Router()
 
 router.get('/user/:id', async (req: Request, res: Response) => {
