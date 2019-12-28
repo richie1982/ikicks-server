@@ -38,7 +38,7 @@ router.post('/signup', async (req: Request, res: Response) => {
 
     const token: string = await jwt.sign({_id: user._id}, tokenSecret)
 
-    res.header({auth: token}).json(savedUser)
+    res.set({'X-auth': token, 'Access-Control-Expose-Headers': 'X-auth' }).json({savedUser, auth: token})
 })
 
 router.post('/login', async (req: Request, res: Response) => {
@@ -51,7 +51,7 @@ router.post('/login', async (req: Request, res: Response) => {
 
     const token: string = await jwt.sign({_id: user._id}, tokenSecret)
 
-    res.header({auth: token}).json(user)
+    res.set({'X-auth': token, 'Access-Control-Expose-Headers': 'X-auth' }).json({user, auth: token})
 })
 
 export default router
